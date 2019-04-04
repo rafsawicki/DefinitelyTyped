@@ -4,18 +4,15 @@
 //                 Pablo Rodríguez <https://github.com/MeLlamoPablo>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
+import { OperationOptions } from 'retry';
+
 declare function AsyncRetry<A>(
 	fn: AsyncRetry.RetryFunction<A>,
 	opts: AsyncRetry.Options
 ): Promise<A>;
 
 declare namespace AsyncRetry {
-	interface Options {
-		retries?: number;
-		factor?: number;
-		minTimeout?: number;
-		maxTimeout?: number;
-		randomize?: boolean;
+	interface Options extends OperationOptions {
 		onRetry?: (e: Error, attempt: number) => any;
 	}
 
